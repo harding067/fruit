@@ -41,7 +41,7 @@
             position: relative;
             width: 220px;
             height: 280px;
-            background-color: skyblue;
+            /* background-color: skyblue; */
             border-radius: 10px;
         }
         
@@ -61,8 +61,31 @@
             /* display: none; */
             width: 100%;
             height: 100%;
-            background-color: #eeca0f;
+            background-color: #ff4400;
             border-radius: 10px;
+            color: #fff;
+        }
+        
+        .menu li .li_box .num {
+            text-align: center;
+            padding-top: 70px;
+        }
+        
+        .menu li .li_box .num span {
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            background-color: #fff;
+            border-radius: 100%;
+            color: #333;
+            font-size: 22px;
+        }
+        
+        .menu li .li_box .txt {
+            text-align: center;
+            padding-top: 20px;
+            font-size: 22px;
         }
     </style>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -77,8 +100,8 @@
             <li v-for="(item,index) in menuImg">
                 <img :src="item.src" alt="">
                 <div class="li_box">
-                    <p>{{item.id}}</p>
-                    <p>{{item.name}}</p>
+                    <p class="num"><span>{{item.id}}</span></p>
+                    <p class="txt">{{item.name}}</p>
                 </div>
             </li>
         </ul>
