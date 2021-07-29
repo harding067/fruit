@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>水果摊儿</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        li {
+            list-style: none;
+        }
+        
+        #box {
+            margin: 10% auto;
+        }
+        
+        #box h2 {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .menu {
+            padding: 0;
+            display: flex;
+            justify-content: space-evenly;
+            overflow: hidden;
+        }
+        
+        .menu li {
+            position: relative;
+            width: 220px;
+            height: 280px;
+            background-color: skyblue;
+            border-radius: 10px;
+        }
+        
+        .menu li:hover {
+            cursor: pointer;
+        }
+        
+        .menu li img {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+        }
+        
+        .menu li .li_box {
+            position: absolute;
+            top: 280px;
+            /* display: none; */
+            width: 100%;
+            height: 100%;
+            background-color: #eeca0f;
+            border-radius: 10px;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="box">
+        <h2>水果集锦</h2>
+        <ul class="menu">
+            <li v-for="(item,index) in menuImg">
+                <img :src="item.src" alt="">
+                <div class="li_box">
+                    <p>{{item.id}}</p>
+                    <p>{{item.name}}</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        $(function() {
+            $(".menu li").mouseenter(function() {
+                $(this).children().stop().animate({
+                    top: "0px"
+                }, 300);
+            });
+            $(".menu li").mouseleave(function() {
+                $(this).children().stop().animate({
+                    top: "280px"
+                }, 300);
+            })
+        })
+    </script>
+
+    <script>
+        let vm = new Vue({
+            el: "#box",
+            data: {
+                menuImg: [
+
+                    {
+                        id: 1,
+                        src: "https://images.pexels.com/photos/35629/bing-cherries-ripe-red-fruit.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+                        name: "樱桃",
+                    }, {
+                        id: 2,
+                        src: "https://images.pexels.com/photos/1435735/pexels-photo-1435735.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+                        name: "石榴",
+                    }, {
+                        id: 3,
+                        src: "https://images.pexels.com/photos/161573/background-water-breakfast-bright-161573.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+                        name: "青柠",
+                    }, {
+                        id: 4,
+                        src: "https://images.pexels.com/photos/461415/pexels-photo-461415.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+                        name: "香橙",
+                    }, {
+                        id: 5,
+                        src: "https://images.pexels.com/photos/2294477/pexels-photo-2294477.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
+                        name: "柑橘",
+                    },
+                ]
+            }
+        })
+    </script>
+</body>
+
+</html>
